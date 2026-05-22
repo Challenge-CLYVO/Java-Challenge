@@ -23,11 +23,11 @@ public class PetPaginacaoService {
 		Page<Pet> paginasPet =
                 repoP.findAll(req);
 
-        Page<PetDTO> paginasTutorDTO =
+        Page<PetDTO> paginasPetDTO =
                 paginasPet.map(
                         pet -> new PetDTO(pet));
 
-        return paginasTutorDTO;
+        return paginasPetDTO;
 	}
 	
 	
