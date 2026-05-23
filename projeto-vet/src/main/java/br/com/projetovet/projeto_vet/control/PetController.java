@@ -66,7 +66,7 @@ public class PetController {
             tags = "Retorno de informações do Pet"
         )	
 	@GetMapping(value="/substring")
-	public List<PetProjection> retornarPorSubstring(@RequestParam String substring){
+	public List<PetProjection> retornarPetPorSubstring(@RequestParam String substring){
 		
 		return cachingP.retornarPetPorSubstring(substring);
 	}
@@ -79,7 +79,7 @@ public class PetController {
             tags = "Retorno de informações do Pet"
         )
 	@GetMapping(value="/por_nome")
-	public List<Pet> retornarPorNome(@RequestParam String nome){
+	public List<Pet> retornarPetPorNome(@RequestParam String nome){
 		
 		return cachingP.retornarPetPorNome(nome);
 	}
@@ -90,7 +90,7 @@ public class PetController {
             tags = "Retorno de informações do Pet"
         )
 	@GetMapping(value="/por_raca")
-	public List<Pet> retornarPorRaca(@RequestParam String raca){
+	public List<Pet> retornarPetPorRaca(@RequestParam String raca){
 		
 		return cachingP.retornarPetPorRaca(raca);
 	}
@@ -113,7 +113,7 @@ public class PetController {
 	@GetMapping(value="/{id}")
 	public Pet retornarPetPorId(@PathVariable @Valid Long id) {
 		
-		Optional<Pet> op = repoP.findById(id);
+		Optional<Pet> op = cachingP.findById(id);
 		
 		if(op.isPresent()) {
 			return op.get();
@@ -139,7 +139,7 @@ public class PetController {
 	}
 	
 	@Operation(
-            summary = "Remover prt",
+            summary = "Remover pet",
             description = "Remove um pet pelo ID e limpa cache",
             tags = "Remoção de informações do Pet"
         )
