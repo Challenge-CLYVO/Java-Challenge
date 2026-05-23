@@ -16,3 +16,8 @@ INSERT INTO pet (nome, idade, raca, especie, id_tutor) VALUES ('filipo', 5, 'Sph
 INSERT INTO pet (nome, idade, raca, especie, id_tutor) VALUES ('napoleao', 5, 'Golden Retriver', 'Cachorro', 5);
 
 
+INSERT INTO clinica (nome, endereco, telefone) VALUES ('Vet Vida Animal', 'Rua das Flores, 120', '11987654321');
+INSERT INTO clinica (nome, endereco, telefone) VALUES ('Pet Care Center', 'Av. Paulista, 1500', '11999998888');
+INSERT INTO clinica (nome, endereco, telefone) VALUES ('Clinica Patinhas', 'Rua Azul, 45', '11955554444');
+INSERT INTO clinica (nome, endereco, telefone) VALUES ('Mundo Animal Vet', 'Av. Brasil, 700', '11933332222');
+INSERT INTO clinica (nome, endereco, telefone) VALUES ('Amigos dos Pets', 'Rua Central, 89', '11911112222');
