@@ -24,4 +24,58 @@ public class Aplicacao_vacina {
 	@ManyToOne
 	@JoinColumn(name="id_pet")
 	private Pet pet;
+	
+	public Aplicacao_vacina() {
+		
+	}
+
+	public Aplicacao_vacina(Long id, LocalDate dataAplicacao, Vacina vacina, Pet pet) {
+
+		this.id = id;
+		this.dataAplicacao = dataAplicacao;
+		this.vacina = vacina;
+		this.pet = pet;
+	}
+	
+	public void transfetirAplicacao_vacina(Aplicacao_vacina aplicacao_vacina) {
+		this.dataAplicacao = aplicacao_vacina.getDataAplicacao();
+		this.pet = aplicacao_vacina.getPet();
+		this.vacina = aplicacao_vacina.getVacina();
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public LocalDate getDataAplicacao() {
+		return dataAplicacao;
+	}
+
+	public void setDataAplicacao(LocalDate dataAplicacao) {
+		this.dataAplicacao = dataAplicacao;
+	}
+
+	public Vacina getVacina() {
+		return vacina;
+	}
+
+	public void setVacina(Vacina vacina) {
+		this.vacina = vacina;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
+	
+	
+	
+	
 }
