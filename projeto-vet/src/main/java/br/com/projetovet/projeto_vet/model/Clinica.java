@@ -27,7 +27,6 @@ public class Clinica {
 	}
 
 	public Clinica(Long id, String nome, String telefone, String endereco) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.telefone = telefone;
@@ -35,7 +34,6 @@ public class Clinica {
 	}
 	
 	public void transferirClinica(Clinica clinica) {
-		this.id = clinica.getId();
 		this.nome = clinica.getNome();
 		this.endereco = clinica.getEndereco();
 		this.telefone = clinica.getTelefone();

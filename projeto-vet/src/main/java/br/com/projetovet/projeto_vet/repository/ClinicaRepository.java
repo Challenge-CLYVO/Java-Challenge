@@ -16,7 +16,7 @@ public interface ClinicaRepository extends JpaRepository<Clinica, Long> {
         FROM Clinica c
         WHERE UPPER(c.nome) LIKE UPPER(CONCAT('%', :nome, '%'))
     """)
-    List<Clinica> retornarPorNome(@Param("nome") String nome);
+    List<Clinica> retornarClinicaPorNome(@Param("nome") String nome);
 
     @Query("""
         SELECT
@@ -26,5 +26,5 @@ public interface ClinicaRepository extends JpaRepository<Clinica, Long> {
         FROM Clinica c
         WHERE UPPER(c.nome) LIKE UPPER(CONCAT('%', :substring, '%'))
     """)
-    List<ClinicaProjection> retornarPorSubstring(@Param("substring") String substring);
+    List<ClinicaProjection> retornarClinicaPorSubstring(@Param("substring") String substring);
 }
