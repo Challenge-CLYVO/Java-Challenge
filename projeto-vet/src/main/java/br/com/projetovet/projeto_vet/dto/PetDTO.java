@@ -17,7 +17,6 @@ public class PetDTO {
 	}
 
 	public PetDTO(Long id, String nome, Integer idade, String especie, String raca, Tutor tutor) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;

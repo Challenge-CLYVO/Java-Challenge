@@ -14,7 +14,6 @@ public class ClinicaDTO {
 	}
 
 	public ClinicaDTO(Long id, String nome, String endereco, String telefone) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
