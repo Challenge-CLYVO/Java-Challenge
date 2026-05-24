@@ -1,5 +1,6 @@
 package br.com.projetovet.projeto_vet.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,6 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 
+@Schema(description = "Entidade responsável pelas vacinas")
 @Entity
 @Table(name="vacina")
 public class Vacina {

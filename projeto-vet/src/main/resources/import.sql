@@ -21,3 +21,12 @@ INSERT INTO clinica (nome, endereco, telefone) VALUES ('Pet Care Center', 'Av. P
 INSERT INTO clinica (nome, endereco, telefone) VALUES ('Clinica Patinhas', 'Rua Azul, 45', '11955554444');
 INSERT INTO clinica (nome, endereco, telefone) VALUES ('Mundo Animal Vet', 'Av. Brasil, 700', '11933332222');
 INSERT INTO clinica (nome, endereco, telefone) VALUES ('Amigos dos Pets', 'Rua Central, 89', '11911112222');
+
+
+INSERT INTO vacina (nome, descricao) VALUES ('V10', 'Vacina multipla para caes');
+INSERT INTO vacina (nome, descricao) VALUES ('Antirrabica', 'Prevencao contra raiva');
+INSERT INTO vacina (nome, descricao) VALUES ('V4', 'Vacina multipla para gatos');
+
+INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-10', 'Pet apresentou febre', 1, 1);
+INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-12', 'Check-up geral', 2, 1);
+INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-15', 'Coceira na pele', 3, 2);
