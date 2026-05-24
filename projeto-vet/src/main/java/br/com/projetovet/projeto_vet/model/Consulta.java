@@ -2,6 +2,7 @@ package br.com.projetovet.projeto_vet.model;
 
 import java.time.LocalDate;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +12,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
 
+@Schema(description = "Entidade responsável pelas consultas")
 @Entity
 @Table(name="consulta")
 public class Consulta {

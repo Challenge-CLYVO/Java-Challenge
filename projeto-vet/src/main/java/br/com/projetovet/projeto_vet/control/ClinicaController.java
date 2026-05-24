@@ -131,6 +131,11 @@ public class ClinicaController {
 		
 	}
 	
+	@Operation(
+            summary = "Remover clinica",
+            description = "Remove uma clinica pelo ID e limpa cache",
+            tags = "Remoção de informações da clinica"
+        )
 	@DeleteMapping(value="remover/{id}")
 	private Clinica removerClinica(@PathVariable @Valid Long id) {
 		
@@ -151,9 +156,9 @@ public class ClinicaController {
 	
 	
 	@Operation(
-            summary = "Remover clinica",
-            description = "Remove uma clinica pelo ID e limpa cache",
-            tags = "Remoção de informações da clinica"
+            summary = "Atualizar clinica",
+            description = "Atualiza dados de uma clinica existente",
+            tags = "Atualização de dados da clinica"
         )
 	@PutMapping(value="atualizar/{id}")
 	private Clinica atualizarClinica(@PathVariable @Valid Long id ,@RequestBody Clinica clinica) {
