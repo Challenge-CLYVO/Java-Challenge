@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 
 @Schema(description = "Entidade responsável pelas aplicações das vacinas")
 @Entity
@@ -39,7 +40,7 @@ public class Aplicacao_vacina {
 		this.pet = pet;
 	}
 	
-	public void transfetirAplicacao_vacina(Aplicacao_vacina aplicacao_vacina) {
+	public void transferirAplicacao_vacina(Aplicacao_vacina aplicacao_vacina) {
 		this.dataAplicacao = aplicacao_vacina.getDataAplicacao();
 		this.pet = aplicacao_vacina.getPet();
 		this.vacina = aplicacao_vacina.getVacina();
@@ -76,8 +77,6 @@ public class Aplicacao_vacina {
 	public void setPet(Pet pet) {
 		this.pet = pet;
 	}
-	
-	
-	
+
 	
 }

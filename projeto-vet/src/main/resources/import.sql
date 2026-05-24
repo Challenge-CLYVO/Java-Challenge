@@ -30,3 +30,13 @@ INSERT INTO vacina (nome, descricao) VALUES ('V4', 'Vacina multipla para gatos')
 INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-10', 'Pet apresentou febre', 1, 1);
 INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-12', 'Check-up geral', 2, 1);
 INSERT INTO consulta (data_consulta, descricao, id_pet, id_clinica) VALUES ('2026-05-15', 'Coceira na pele', 3, 2);
+
+INSERT INTO aplicacao_vacina (data_aplicacao, id_pet, id_vacina) VALUES ('2025-01-10', 1, 1);
+INSERT INTO aplicacao_vacina (data_aplicacao, id_pet, id_vacina) VALUES ('2025-02-15', 2, 2);
+INSERT INTO aplicacao_vacina (data_aplicacao, id_pet, id_vacina) VALUES ('2025-03-20', 3, 1);
+INSERT INTO aplicacao_vacina (data_aplicacao, id_pet, id_vacina) VALUES ('2025-04-05', 1, 2);
+
+INSERT INTO historico_saude (descricao, data_registro, id_pet) VALUES ('Consulta de rotina, pet saudável', '2025-01-05', 1);
+INSERT INTO historico_saude (descricao, data_registro, id_pet) VALUES ('Vacinação aplicada sem reações', '2025-02-10', 2);
+INSERT INTO historico_saude (descricao, data_registro, id_pet) VALUES ('Tratamento de vermifugação concluído', '2025-03-18', 3);
+INSERT INTO historico_saude (descricao, data_registro, id_pet) VALUES ('Retorno pós cirurgia, evolução positiva', '2025-04-22', 1);
