@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"xmlns:th="http://www.thymeleaf.org">
+      
+
+<head th:replace="~{fragmentos :: cabecalho('Meus Pets')}"></head>
+      
+<body>
+
+<div th:replace="~{fragmentos :: funcao-logout}"></div>
+     
+
+
+<main class="container">
+
+    <div class="card card-maior">
+
+        <h1>Meus Pets</h1>
+        <p class="subtitulo">Pets cadastrados na sua conta</p>
+           
+        
+
+        <a class="botao-link"th:href="@{/responsavel/pets/novo}">           
+            Cadastrar Pet
+        </a>
+
+
+        <div class="lista-vazia"th:if="${#lists.isEmpty(pets)}">             
+            Nenhum pet cadastrado.
+        </div>
+
+
+        <div class="item"th:each="pet : ${pets}">
+             
+
+            <h2 th:text="${pet.nome}">Nome do Pet</h2>              
+        
+            <p>
+                <strong>Espécie:</strong>
+                <span th:text="${pet.especie}">Espécie</span>                                 
+            </p>
+
+
+            <p>
+                <strong>Raça:</strong>
+                <span th:text="${pet.raca}">
+                    Raça
+                </span>
+            </p>
+
+
+            <a class="botao-secundario"th:href="@{/responsavel/pets/{id}(id=${pet.idPet})}">
+                Ver detalhes
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

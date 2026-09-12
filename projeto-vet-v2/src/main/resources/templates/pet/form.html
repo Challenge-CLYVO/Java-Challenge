@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"xmlns:th="http://www.thymeleaf.org">
+      
+
+<head th:replace="~{fragmentos :: cabecalho('Cadastrar Pet')}"></head>
+      
+<body>
+
+<div th:replace="~{fragmentos :: funcao-logout}"></div>
+     
+<main class="container">
+
+    <div class="card">
+
+        <h1>Cadastrar Pet</h1>
+        <form th:object="${petForm}"
+              th:action="@{/responsavel/pets}"
+              method="post">
+
+
+            <label for="nome">Nome</label>                     
+            <input
+                type="text"
+                id="nome"
+                th:field="*{nome}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{nome}"></div>              
+            <label for="sexo">Sexo</label>
+                           
+            <select
+                id="sexo"
+                th:field="*{sexo}"
+                th:errorclass="is-invalid">
+
+                <option value="">Selecione</option>                                   
+                <option value="MACHO">Macho</option>                                    
+                <option value="FEMEA">Fêmea</option>                                
+                <option value="NAO_INFORMADO">Não informado</option>                                    
+
+            </select>
+
+            <div class="campo-erro"th:errors="*{sexo}"></div>
+                            
+            <label for="raca">Raça</label>                         
+
+            <input
+                type="text"
+                id="raca"
+                th:field="*{raca}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{raca}">
+                 
+            </div>
+
+
+            <label for="especie">Espécie</label>                            
+            <input
+                type="text"
+                id="especie"
+                th:field="*{especie}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro" th:errors="*{especie}"></div>
+                 
+            
+
+
+            <label for="dataNascimento">Data de nascimento</label>                
+            
+            <input
+                type="date"
+                id="dataNascimento"
+                th:field="*{dataNascimento}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{dataNascimento}"></div>                 
+            
+            <input
+                type="hidden"
+                th:name="${_csrf.parameterName}"
+                th:value="${_csrf.token}">
+            <button type="submit">Cadastrar</button>                       
+        </form>
+
+        <p class="link">
+            <a th:href="@{/responsavel/pets}">Voltar</a>                         
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

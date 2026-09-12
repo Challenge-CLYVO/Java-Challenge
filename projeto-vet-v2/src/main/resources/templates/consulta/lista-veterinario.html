@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+      
+      
+
+<head th:replace= "~{fragmentos :: cabecalho('Minhas Consultas')}"> </head>
+      
+
+
+<body>
+
+<div th:replace= "~{fragmentos :: funcao-logout}"> </div>
+<main class="container">
+
+    <div class="card card-maior">
+        <h1>Minhas Consultas</h1>
+        <p class="subtitulo"> Consultas atribuídas a você</p>
+            
+       
+        <div class="lista-vazia" th:if="${#lists.isEmpty(consultas)}">
+            Nenhuma consulta encontrada.
+        </div>
+
+
+        <div class="item" th:each="consulta : ${consultas}">
+            <h2 th:text="${consulta.pet.nome}"> Nome do Pet</h2>
+                
+            <p>
+                <strong>Data:</strong>
+                <span th:text="${consulta.dataHora}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Motivo:</strong>
+                <span th:text="${consulta.motivo}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${consulta.status}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Clínica:</strong>
+                <span th:text="${consulta.clinica.nome}">
+                </span>
+            </p>
+
+
+            <a class="botao-secundario" th:href="@{/veterinario/consultas/{id}(id=${consulta.idConsulta})}">
+                Ver consulta
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

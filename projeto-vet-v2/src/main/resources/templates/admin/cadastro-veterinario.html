@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecalho('Cadastrar Veterinário - Pet Care')}"></head>
+
+
+<body>
+
+<div th:replace="~{fragmentos :: funcao-logout}"></div>
+
+<main class="container">
+    <div class="card card-maior">
+        <h1>Cadastrar Veterinário</h1>
+        <p class="subtitulo">Área administrativa</p>
+            
+      
+        <div class="mensagem sucesso"th:if="${param.sucesso}">     
+            Veterinário cadastrado com sucesso.
+        </div>
+
+
+        <form th:action="@{/admin/veterinarios/novo}"
+              th:object="${cadastro}"
+              method="post">
+            <label for="nome">Nome</label>               
+            
+            <input
+                type="text"
+                id="nome"
+                th:field="*{nome}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{nome}"></div>
+                             
+
+            <label for="email">Email</label>
+                
+            <input
+                type="email"
+                id="email"
+                th:field="*{email}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{email}"></div>
+                            
+            <label for="telefone">Telefone</label>
+                           
+            <input
+                type="text"
+                id="telefone"
+                th:field="*{telefone}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{telefone}"></div>
+                 
+            <label for="crv">CRV</label>
+                           
+            <input
+                type="text"
+                id="crv"
+                th:field="*{crv}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{crv}"></div>
+                             
+            <label for="especialidade">Especialidade</label>
+                
+            
+            <input
+                type="text"
+                id="especialidade"
+                th:field="*{especialidade}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{especialidade}"></div>
+                           
+            <label for="idClinica">Clínica</label>
+                         
+            <select
+                id="idClinica"
+                th:field="*{idClinica}"
+                th:errorclass="is-invalid">
+
+                <option value="">Selecione uma clínica</option>
+                                  
+                <option
+                    th:each="clinica : ${clinicas}"
+                    th:value="${clinica.idClinica}"
+                    th:text="${clinica.nome}">
+                </option>
+
+            </select>
+
+            <div class="campo-erro" th:errors="*{idClinica}"></div>
+                             
+            <label for="senha">Senha provisória</label>
+                           
+            <input
+                type="password"
+                id="senha"
+                th:field="*{senha}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"th:errors="*{senha}"></div>
+                            
+            <label for="confirmarSenha">Confirmar senha</label>
+                          
+            <input
+                type="password"
+                id="confirmarSenha"
+                th:field="*{confirmarSenha}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"
+                 th:errors="*{confirmarSenha}">
+            </div>
+
+
+            <input
+                type="hidden"
+                th:name="${_csrf.parameterName}"
+                th:value="${_csrf.token}">
+
+
+            <button type="submit">Cadastrar Veterinário</button>
+                
+            
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

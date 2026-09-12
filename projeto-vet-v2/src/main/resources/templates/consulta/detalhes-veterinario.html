@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+      
+
+<head th:replace= "~{fragmentos :: cabecalho('Detalhes da Consulta')}"></head>
+      
+<body>
+
+<div th:replace= "~{fragmentos :: funcao-logout}"></div>
+    
+
+<main class="container">
+
+    <div class="card card-maior">
+        <h1>Consulta</h1>
+        <div class="item">
+            <h2 th:text="${consulta.pet.nome}"> Pet</h2>
+              
+            <p>
+                <strong>Espécie:</strong>
+                <span th:text="${consulta.pet.especie}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Raça:</strong>
+                <span th:text="${consulta.pet.raca}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Data da consulta:</strong>
+                <span th:text="${consulta.dataHora}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Motivo:</strong>
+                <span th:text="${consulta.motivo}">
+                </span>
+            </p>
+
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${consulta.status}">
+                </span>
+            </p>
+
+        </div>
+
+        <h2>Sensores do Pet</h2>
+
+        <div class="lista-vazia"th:if="${#lists.isEmpty(sensores)}">
+            Nenhum sensor cadastrado.
+        </div>
+
+        <div class="item" th:each="sensor : ${sensores}">
+           
+            <h3 th:text="${sensor.tipo}"> Sensor </h3>
+            <p>
+                <strong>Unidade:</strong>
+                <span th:text="${sensor.unidade}">
+                </span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${sensor.status}">
+                </span>
+            </p>
+
+            <h4>Leituras</h4>
+
+            <div class="lista-vazia" th:if= "${#lists.isEmpty(leiturasPorSensor.get(sensor.idSensor))}">
+                Nenhuma leitura encontrada.
+            </div>
+
+
+            <table th:if= "${!#lists.isEmpty(leiturasPorSensor.get(sensor.idSensor))}">
+                
+                <thead>
+                <tr>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each= "leitura : ${leiturasPorSensor.get(sensor.idSensor)}">
+                    
+                    <td th:text="${leitura.valor}">
+                    </td>
+                    <td th:text="${leitura.dataRegistro}">
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <h2>Finalizar Consulta</h2>
+
+
+        <div th:if="${consulta.status != 'REALIZADA'}">
+
+            <form
+                th:object="${finalizacao}"
+                th:action=
+                "@{/veterinario/consultas/{id}/finalizar(id=${consulta.idConsulta})}"
+                method="post">
+                <label for="observacao">
+                    Observação
+                </label>
+                <textarea
+                    id="observacao"
+                    th:field="*{observacao}"
+                    th:errorclass="is-invalid"
+                    rows="5">
+                </textarea>
+                <div class="campo-erro"
+                     th:errors="*{observacao}">
+                </div>
+                <input
+                    type="hidden"
+                    th:name="${_csrf.parameterName}"
+                    th:value="${_csrf.token}">
+                <button type="submit">
+                    Finalizar Consulta
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="item" th:if="${consulta.status == 'REALIZADA'}">
+            <strong>Observação:</strong>
+            <p th:text="${consulta.observacao}">
+            </p>
+        </div>
+        <p class="link">
+
+            <a th:href="@{/veterinario/consultas}">Voltar para consultas</a>
+                 
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace=
+      "~{fragmentos :: cabecalho('Agendar Consulta')}">
+</head>
+
+<body>
+
+<div th:replace=
+     "~{fragmentos :: funcao-logout}">
+</div>
+
+<main class="container">
+
+    <div class="card">
+
+        <h1>Agendar Consulta</h1>
+
+
+        <form th:object="${consulta}"
+              th:action="@{/responsavel/consultas}"
+              method="post">
+            
+            <input type="hidden" th:field="*{idPet}">    
+            <label for="dataHora"> Data e horário </label>
+                
+           
+
+            <input
+                type="datetime-local"
+                id="dataHora"
+                th:field="*{dataHora}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro"
+                 th:errors="*{dataHora}">
+            </div>
+
+
+            <label for="motivo"> Motivo da consulta </label>
+                
+            <input
+                type="text"
+                id="motivo"
+                th:field="*{motivo}"
+                th:errorclass="is-invalid">
+
+            <div class="campo-erro" th:errors="*{motivo}"></div>
+                 
+            
+
+            <label for="idVeterinario"> Veterinário </label>
+                
+    
+            <select
+                id="idVeterinario"
+                th:field="*{idVeterinario}"
+                th:errorclass="is-invalid">
+
+                <option value=""> Selecione </option>
+                    
+                <option
+                    th:each="vet : ${veterinarios}"
+                    th:value="${vet.idVeterinario}"
+                    th:text="${vet.usuario.nome}">
+                </option>
+
+            </select>
+
+            <div class="campo-erro" th:errors="*{idVeterinario}"> </div>
+                
+            
+            <input
+                type="hidden"
+                th:name="${_csrf.parameterName}"
+                th:value="${_csrf.token}">
+
+            <button type="submit"> Agendar </button>
+            
+        </form>
+
+
+        <p class="link">
+            <a th:href="@{/responsavel/pets/{id}(id=${consulta.idPet})}">
+                Voltar
+            </a>
+
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

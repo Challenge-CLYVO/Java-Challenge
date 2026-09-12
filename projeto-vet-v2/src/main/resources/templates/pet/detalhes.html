@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragmentos :: cabecalho('Detalhes do Pet')}"></head>
+<body>
+
+<div th:replace="~{fragmentos :: funcao-logout}"></div>
+     
+
+<main class="container">
+
+    <div class="card card-maior">
+
+        <h1 th:text="${pet.nome}">Pet</h1>
+            
+        <div class="item">
+
+            <p>
+                <strong>Espécie:</strong>
+                <span th:text="${pet.especie}"></span>
+            </p>
+
+            <p>
+                <strong>Raça:</strong>
+                <span th:text="${pet.raca}"></span>
+            </p>
+
+            <p>
+                <strong>Sexo:</strong>
+                <span th:text="${pet.sexo}"></span>
+            </p>
+
+            <p>
+                <strong>Data de nascimento:</strong>
+                <span th:text="${pet.dataNascimento}"></span>
+            </p>
+
+        </div>
+
+
+        <a class="botao-link"th:href="@{/responsavel/pets/{id}/consultas/nova(id=${pet.idPet})}">
+            Agendar Consulta
+        </a>
+
+
+        <h2>Sensores</h2>
+
+
+        <div class="lista-vazia"th:if="${#lists.isEmpty(sensores)}">
+            Nenhum sensor cadastrado.
+        </div>
+
+
+        <div class="item"th:each="sensor : ${sensores}">
+            <h3 th:text="${sensor.tipo}">Sensor</h3>
+              
+            <p>
+                <strong>Unidade:</strong>
+                <span th:text="${sensor.unidade}"></span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${sensor.status}"></span>
+            </p>
+
+
+            <h4>Leituras</h4>
+            <div class="lista-vazia"th:if="${#lists.isEmpty(leiturasPorSensor.get(sensor.idSensor))}">
+                Nenhuma leitura encontrada.
+            </div>
+
+
+            <table th:if="${!#lists.isEmpty(leiturasPorSensor.get(sensor.idSensor))}">
+                <thead>
+
+                <tr>
+                    <th>Valor</th>
+                    <th>Data</th>
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                <tr th:each="leitura : ${leiturasPorSensor.get(sensor.idSensor)}">
+                    
+                    <td th:text="${leitura.valor}">
+                    </td>
+
+                    <td th:text="${leitura.dataRegistro}">
+                    </td>
+
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <h2>Lembretes</h2>
+
+
+        <div class="lista-vazia"th:if="${#lists.isEmpty(lembretes)}">           
+            Nenhum lembrete cadastrado.
+        </div>
+
+
+        <div class="item"th:each="lembrete : ${lembretes}">            
+
+            <h3 th:text="${lembrete.titulo}">Lembrete</h3>               
+            
+            <p th:text="${lembrete.descricao}">
+            </p>
+
+            <p>
+                <strong>Data:</strong>
+                <span th:text="${lembrete.dataHora}">
+                </span>
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                <span th:text="${lembrete.status}">
+                </span>
+            </p>
+
+        </div>
+
+
+        <p class="link">
+            <a th:href="@{/responsavel/pets}">Voltar para meus pets</a>    
+        </p>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>
