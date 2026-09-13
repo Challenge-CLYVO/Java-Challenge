@@ -621,7 +621,7 @@ A demonstração completa do sistema pode ser assistida no YouTube:
 **Link:**
 
 ```text
-https://youtu.be/SEU_LINK_AQUI
+https://www.youtube.com/watch?v=qbTPKhybde4
 ```
 
 O vídeo demonstra:
